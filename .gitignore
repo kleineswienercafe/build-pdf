@@ -102,3 +102,21 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# LaTeX
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+src/tex/*.pdf
+src/md/*.pdf
+*.synctex.gz
+
+# PDF-A
+*.xmpi
+*.xmpdata
+
+# our output folder
+documents/
