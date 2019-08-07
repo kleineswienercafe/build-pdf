@@ -7,12 +7,12 @@ class Param:
 
         self.root = root
 
-        self.texPath = self.root + "/src/tex/"
-        self.mdPath = self.root + "/src/md/"
-        self.dstPath = self.root + "/documents/"
+        self.texPath = self.root + "/src/tex/"      # repository relative path of tex files
+        self.mdPath = self.root + "/src/md/"        # repository relative path of markdown files
+        self.dstPath = self.root + "/documents/"    # repository relative output path
         self.alwaysFail = True
         self.clean = True
-        self.srcBuild = False # unfortunately we need this for some old (latest) ubuntu packages 
+        self.srcBuild = True # unfortunately we need this for some old (latest) ubuntu packages 
 
 
 def main(p: Param):
