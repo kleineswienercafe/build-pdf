@@ -12,6 +12,7 @@ addons:
       - texlive-latex-extra
       - python3
       - pandoc
+      - lmodern # needed for md -> pdf
 
   # # OS X
   # homebrew:
