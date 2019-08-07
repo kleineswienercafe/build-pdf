@@ -1,6 +1,8 @@
 # KWC - Build PDFs
 This projects builds PDFs from LaTeX or Markdown sources. It is inteded to plug into existing CI's of LaTeX/Markdown repositories.
 
+[![Build Status](https://travis-ci.org/kleineswienercafe/build-pdf.svg?branch=master)](https://travis-ci.org/kleineswienercafe/build-pdf)
+
 ## Repository Structure
 By default we expect this repository structure:
 - `src/tex` folder containing all LaTeX sources
