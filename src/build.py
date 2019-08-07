@@ -10,9 +10,9 @@ class Param:
         self.texPath = self.root + "/src/tex/"      # repository relative path of tex files
         self.mdPath = self.root + "/src/md/"        # repository relative path of markdown files
         self.dstPath = self.root + "/documents/"    # repository relative output path
-        self.alwaysFail = True
-        self.clean = True
-        self.srcBuild = True # unfortunately we need this for some old (latest) ubuntu packages 
+        self.alwaysFail = True                      # if true, the script stops and raises an exeption on compile errors - use this for CIs
+        self.clean = True                           # remove intermediate files (only available if srcBuild is False)
+        self.srcBuild = True                        # if true, LaTeX is built in the src folder - this is needed for old livetex (i.e. 2017) distributions
 
 
 def main(p: Param):
