@@ -41,4 +41,37 @@ Use `python3` rather than `python` on linux.
 pandoc template-md.md -o template-md.pdf
 ````
 
+## CI Integration
+You can easily integrate this script into your [tavis CI](.travis.yml). If you are using gitlab, create a `.gitlab-ci.yml` with this content:
+```yml
+image: diemmarkus/flowme-tex:latest # load docker with all dependencies needed
+
+stages:
+  - build
+  - deploy
+
+build-tex:
+  stage: build
+  artifacts:
+    untracked: true
+    expire_in: 30 min
+  script:
+    - git clone https://github.com/kleineswienercafe/build-pdf.git build-pdf
+    - python3 build-pdf/src/build.py .
+    
+# make working copies available on gitlab pages
+pages:
+    stage: deploy
+    dependencies:
+      - build-tex
+    artifacts:
+      paths:
+        - public
+      expire_in: 2 weeks
+    script:
+      - mkdir public
+      - mv documents/*.pdf public/
+```
+
+
 enjoy!

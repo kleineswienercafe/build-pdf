@@ -15,16 +15,6 @@ addons:
       - lmodern # needed for md -> pdf
       - texlive-fonts-recommended
 
-  # # OS X
-  # homebrew:
-  #   update: true
-  #   packages:
-  #     - pandoc
-
-# before_script:
-#   - mkdir build
-#   - cd build
-
 script:
   - python3 src/build.py .
   
