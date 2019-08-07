@@ -13,6 +13,7 @@ addons:
       - python3
       - pandoc
       - lmodern # needed for md -> pdf
+      - texlive-fonts-recommended
 
   # # OS X
   # homebrew:
