@@ -49,6 +49,10 @@ def cleanup(path: str):
 
 def compileDir(srcPath: str, ext: str, p: Param):
 
+    if not os.path.exists(srcPath):
+        print(srcPath + " does not exist - skipping")
+        return []
+
     files = os.listdir(srcPath)
     tf = [f for f in files if f.endswith(ext)]
 
@@ -78,6 +82,10 @@ def compileDir(srcPath: str, ext: str, p: Param):
     return pdfs
 
 def compileTex(srcPath: str, filename: str, dstPath: str):
+
+    if not os.path.exists(srcPath):
+        print(srcPath + " does not exist - skipping")
+        return []
 
     attr = " -interaction=nonstopmode"
     oDir = " -output-directory=\"" + dstPath + "\""
