@@ -1,6 +1,5 @@
 import os
 
-
 class Param:
     
     def __init__(self, root: str):
@@ -13,7 +12,7 @@ class Param:
         self.alwaysFail = True                      # if true, the script stops and raises an exeption on compile errors - use this for CIs
         self.clean = True                           # remove intermediate files (only available if srcBuild is False)
         self.srcBuild = True                        # if true, LaTeX is built in the src folder - this is needed for old livetex (i.e. 2017) distributions
-
+        self.createIndex = True                     # creates a index.html, that links all pdfs produced
 
 def main(p: Param):
 
@@ -31,6 +30,9 @@ def main(p: Param):
 
     if p.srcBuild:
         copypdfs(pdfs, p.dstPath)
+
+    if p.createIndex and pdfs:
+        createIndex(p.dstPath, pdfs)
 
 def copypdfs(pdfs: list, dst: str):
     from shutil import copyfile
@@ -175,6 +177,40 @@ def cmdprint(output):
 
     for line in output.decode('utf-8').split('\n'):
         print(line)
+
+
+def createIndex(dstPath: str, pdfs: list):
+    from datetime import date
+    from shutil import copyfile
+
+    srcPath = os.path.dirname(os.path.abspath(__file__)) + "/html/"
+
+    files = os.listdir(srcPath)
+    for f in files:
+        copyfile(srcPath + f, dstPath + f)
+
+    src = srcPath + "index.html"
+    dst = dstPath + "index.html"
+
+    with open(src, 'r') as srcfile:
+        with open(dst, 'w') as dstfile:
+
+            for l in srcfile:
+
+                # set date
+                if "<span id=\"today\"" in l:
+                    l = l.replace("</span>", str(date.today()) + "</span>")
+
+                dstfile.write(l)
+
+                # create links to pdf
+                if "<p id=\"pdfs\">" in l:
+
+                    for pdf in pdfs:
+                        lname = os.path.basename(pdf)
+                        name = lname.replace(".pdf", "")
+                        pl = "<a href=\"./" + lname + "\">" + name + "</a></br>"
+                        dstfile.write(pl)
 
 if __name__ == "__main__":
     

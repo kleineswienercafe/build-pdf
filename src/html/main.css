@@ -1,0 +1,60 @@
+html, body {
+	background-color: #fffcfa;
+	margin: 0;
+	height: 100%;
+    border: none;
+
+    font-family: "open sans";
+	font-weight: 300;
+	color: #666;
+}
+
+a {
+	text-decoration: none;
+	color: #666;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+}
+
+h1 { 
+    font-family: "open sans";
+	font-weight: 300;
+
+    font-size:42pt;
+    color:333;
+    
+    text-shadow: 1pt 1pt 1pt rgba(0,0,0,0.3);
+
+	transition:all 0.6s;
+    -webkit-transition:all 0.6s;
+    margin: 0;
+}
+
+.large-text { 
+	font-size: 42pt;
+}
+
+.medium-text {
+	font-size: 26pt;
+}
+
+.small-text {
+	font-size: 10pt;
+    margin-left: 3pt;
+}
+
+#doc-list {
+    position: absolute;
+	top: 33%;
+    left: 10%;
+    width: 33%;
+    /* transition: all 1.5s; */
+	-webkit-transition: all 1.5s;
+}
+
+#pdfs {
+    padding: 3pt;
+}
