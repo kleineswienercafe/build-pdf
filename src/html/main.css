@@ -50,7 +50,7 @@ h1 {
     position: absolute;
 	top: 33%;
     left: 10%;
-    width: 33%;
+    width: 90%;
     transition: all 1.5s; 
 	-webkit-transition: all 1.5s;
 }
